@@ -1,0 +1,828 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>KrushiVikas | Crop Prediction</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Fjalla+One&display=swap" rel="stylesheet">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    .nav-item:hover {
+      text-decoration: underline;
+      text-decoration-color: red;
+      -webkit-text-decoration-color: red;
+    }
+
+    .box {
+      box-shadow: 1px 8px 20px grey;
+      -webkit-transition: box-shadow .6s ease-in;
+    }
+  </style>
+</head>
+
+<body style="font-family: 'Fjalla One', sans-serif;">
+
+
+  <body style="font-family: 'Fjalla One', sans-serif;">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" style="padding-top: 16px; padding-bottom: 16px;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="font-size:35px;"><img style="height:50px; width:50px;"
+            src="{% static 'images/farmer.png' %}"> KrushiVikas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        {% if user.is_authenticated %}
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            {% comment %} <li class="nav-item">
+              <a class="nav-link">Welcome {{user.username}}</a>
+            </li> {% endcomment %}
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'home' %}" style="font-size:20px;"><i
+                  class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link  active" href="{% url 'predict' %}" style="font-size:20px;"><i
+                  class="fas fa-seedling"></i> Crop Prediction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'plantdd' %}" style="font-size:20px;"><i
+                  class="fas fa-notes-medical"></i> Disease detection</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" style="font-size:20px"
+                role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-solid fa-axe"></i>
+                Tools</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                <li><a class="dropdown-item" style="font-size:15px" href="{% url 'process' %}">Tool renting process</a>
+                </li>
+                <li><a class="dropdown-item" style="font-size:15px" href="{% url 'addtools' %}">Add Tools</a></li>
+                <li><a class="dropdown-item" style="font-size:15px" href="{% url 'viewtools' %}">View Available
+                    Tools</a></li>
+                <li><a class="dropdown-item" style="font-size:15px" href="{% url 'mytools' %}">My Tools</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}" style="font-size:20px;"><i class="fas fa-phone-alt"></i>
+                Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'developers' %}" style="font-size:20px; padding-left:420px;">
+                Contributors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ulogout' %}" style="font-size:20px; padding-left:20px;"><i
+                  class="fas fa-sign-out-alt"></i> Log Out</a>
+            </li>
+          </ul>
+        </div>
+        {% else %}
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#" style="font-size:20px;"><i
+                  class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ulogin' %}" style="font-size:20px;"> <i class="fas fa-sign-in-alt"></i>
+                Log In</a>
+            </li>
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+    </nav>
+    <br><br><br><br><br>
+    <center>
+      <div class="container-fluid" data-aos="fade-left" style="background-color: white; padding:15px;">
+
+        <h4 style="text-align: center; font-size: 30px; margin: 0px; color: black">
+          <b>The predicted crop is {{ans}}.</b>
+        </h4><br>
+
+        <p id="demo" style="color: black; font-size: 30px;">{{acc}}%.</p>
+    </center>
+    </div>
+    <br><br>
+    {% if ans == "rice" %}
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/rice.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Rice<p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Hot and humid climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 21 to 37º C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> More the 100 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Regions which have high humidity, prolonged sunshine and an assured supply of water. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "maize" %}
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/maize.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Maize<p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Hot climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 21°C to 27°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 60 cm to 110 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Frost-free days. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "chickpea" %}
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/chickpea.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Chickpea<p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Hot and humid climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 20˚ to 30˚C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 65 to 95 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Well-drained loam and clay loam soils. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "kidneybeans" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/kidneybeans.jpeg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Kidneybeans<p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Tropical climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 15°C to 25°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 60 to 150 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> February-March and for Kharif season. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "pigeonpeas" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/piegonpeas.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Pigeonpeas<p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Tropical climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 17°C to 22°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 60 -100 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Post rainy season. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "mothbeans" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/mothbeans.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Mothbeans <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Hot and dry climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 24°C to 32°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 50 to 75 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Sandy soil. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "mungbean" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/mungbean.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Mungbean <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Warm humid climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 25⁰ C to 35⁰ C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 40 to 55 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Blocks with high stored moisture from long fallow or early season rains. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "blackgram" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/blackgram.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Blackgram <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Hot and humid climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 25°C to 35°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 70 to 90 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Well drained loam soil with pH of 6.5 to 7.8. </h5>
+
+        <br>
+      </div>
+    </div>
+    {% elif ans == "lentil" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/lentil.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Lentil <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Sunny climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 18 to 30 °C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 152 to 527 mm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Loose, well-drained soil that is rich in organic matter. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "pomegranate" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/pomehgranate.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Pomegranate <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Hot and dry climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 5 to 38 °C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 18 to 100 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Semi-arid conditions and can be grown upto an altitude of 500 m. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "banana" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/banana.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Banana <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Warm climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 26 to 30°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 200 cm or higher.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Growing at elevations of 0–920 m or more. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "mango" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/mango.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Mango <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Tropical climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 23.90 to 26.70 º C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 89 to 100 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Dry weather before blossoming. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "grapes" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/grapes.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Grapes <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Sunny climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 25 to 32°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> Not exceeding 90 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> A large, open, sunny space with good soil. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "watermelon" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/watermelon.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Watermelon <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Dry weather with full of sunshine. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 18°C and 35°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 25 to 35 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Sandy loam rich in organic matter with good drainage and pH range for 6.5-7.5. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "muskmelon" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/muskmelon.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Muskmelon <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Warm climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 18 to 30°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 50 to 75mm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Sandy loam / light-textured, warm, well-drained soils with high in organic matter. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "apple" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/apple.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Apple <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Sunny climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 21 to 24°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 100 to 125 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Well-drained, loam soils having a depth of 45 cm and a pH range of pH 5.5-6.5. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "orange" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/orange.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Orange <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Dry climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 10°C to 35°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 100 to 120 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Frost-free tropical and sub-tropical regions. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "papaya" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/papaya.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Papaya <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Grows well in sunny, warm & humid climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 21 to 33 ◦C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 35 to 250 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> A high fertile soil with good drainage. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "coconut" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/coconut.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Coconut <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Sunny, tropical climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 27 ± 5° C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> at least 25 inches of annual rainfall, up to 157 inches.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Moisture-loving areas with sandy and loamy soils. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "cotton" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/cotton.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Cotton <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Warm and humid climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 21°C to 37°C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 50 to 100 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Under irrigated conditions, it requires high temperature and bright sunshine for its growth. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "jute" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/jute.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Jute <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Humid tropical climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 24° C to 37° C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 160 to 200 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> River basins or alluvial or loamy soils. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% elif ans == "coffee" %}
+
+    <div class="container box" style="width: 1000px; height: 500px;">
+      <br>
+      <img src="{% static 'images/coffee.jpg' %}" data-aos="zoom-in" height="350px" width="400px"
+        style="padding-right:20px;padding-left: 20px;" align="right">
+      <div class="container" align="left" data-aos="fade-left">
+        <br>
+        <h1>
+          <center>Coffee <p style="font-size: small;"></p>
+        </h1>
+        </center><br>
+        <b>
+          <h5>Climate :
+        </b> Hot and humid climate. </h5>
+        <b>
+          <h5>Temperature range :
+        </b> 15°C to 28 °C.</h5>
+        <b>
+          <h5>Rainfall :
+        </b> 150 to 250 cm.</h5>
+        <b>
+          <h5>Best suited for :
+        </b> Soils that are naturally fertile, high in organic matter, well drained (to 0.5–1 metre), well aerated and
+        have a profile at least one metre deep. </h5>
+
+        <br>
+      </div>
+    </div>
+
+    {% endif %}
+    <br><br><br><br><br>
+    <div style="background-color:#D3DEDC; padding:30px;" class="container-fluid  pb-5  ">
+
+      <div id="contact" class="container">
+  
+        <div class="row">
+          <div class="col-lg-4 col-md-4">
+  
+  
+            <h1> Krushi Vikas</h1>
+            <p>Designed and built with all the love in the world by the Krushi Vikas team with the help of our
+              contributors.</p>
+            <i class="fas fa-map-marker-alt"></i> V.E.S. Institute of Technology, Hashu Adwani Memorial Complex,
+            Collector's Colony, Chembur, Mumbai, Maharashtra -400074 <br>
+            <i class="fas fa-envelope"></i><a href="mailto: krushivikas2022@gmail.com" style="color:black;"> krushivikas2022@gmail.com</a><br><br>
+            <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-linkedin-in"></i></a>
+            <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-instagram"></i></a>
+            <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-twitter"></i></a>
+            <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-facebook-f"></i></a>
+            <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-youtube"></i></a>
+  
+          </div>
+          <div class="col-lg-4 col-md-4">
+            <center>
+              <img style="height:300px; width:300px;" src="{% static 'images/farmer.png' %}">
+            </center>
+  
+  
+          </div>
+  
+          <div class="col-lg-4 col-md-4">
+            <center>
+              <h3>Company</h3>
+              <a style="color:black; text-decoration:none" href="{% url 'predict' %}" class="linked">Crop
+                Prediction</a><br>
+              <a style="color:black; text-decoration:none" href="{% url 'plantdd' %}" class="linked"> Disease
+                detection</a><br>
+              <a style="color:black; text-decoration:none" href="{% url 'contact' %}" class="linked">Contact us</a><br>
+              <a style="color:black; text-decoration:none" href="{% url 'ulogout' %}" class="linked">Log Out</a><br>
+              <a style="color:black; text-decoration:none" href="{% url 'help' %}" class="linked">Help</a><br>
+            </center>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 250,
+        duration: 2000,
+      });
+
+      function myFunction() {
+        document.getElementById("demo").innerHTML = "The predicted crop is {{ans}}";
+      }
+    </script>
+  </body>
+
+
+</html>

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>KrushiVikas | Login</title>
+    <link rel="icon" href="{% static 'images/logokrushi.PNG' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="background-image: url({% static 'images/farm.JPG' %});">
+    <section class="section__loginForm">
+        <br>
+        <p style="font-size: 40px; color: red; text-align: center;">{{msg}}</p>
+        <div class="container">
+            <form class="loginForm" method="POST" action="{% url 'ulogin' %}">
+                {% csrf_token %}
+                <div class="loginForm__group">
+                    <img src="{% static 'images/logokrushi.PNG' %}" alt="">
+                </div>
+                <div class="loginForm__group">
+                    <label for="">Email</label>
+                    <input type="text" name="em" required>
+                </div>
+
+                <div class="loginForm__group">
+                    <label for="">Password</label>
+                    <input type="password" name="pw" required>
+                </div>
+
+                <div class="loginForm__group">
+                    <button type="submit" class="loginBtn">Login</button>
+                    <a href="{% url 'fp' %}" class="link1">Forgot Password?</a>
+                    <a href="{% url 'usignup' %}" class="link1">New User? Sign Up</a>
+                    <a href="{% url 'ev' %}" class="link1">Verify email</a>
+                    <a href="{% url 'help' %}" class="link1">Help</a>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="footer">
+
+        </div>
+    </section>
+</body>
+
+</html>

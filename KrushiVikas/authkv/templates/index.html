@@ -1,0 +1,353 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>KrushiVikas</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Fjalla+One&display=swap" rel="stylesheet">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <title>KrushiVikas</title>
+  <style>
+    .nav-item:hover {
+      text-decoration: underline;
+      text-decoration-color: red;
+      -webkit-text-decoration-color: red;
+    }
+
+    .box:hover {
+      box-shadow: 1px 8px 20px grey;
+      -webkit-transition: box-shadow .6s ease-in;
+    }
+
+    .parallax1 {
+      /* The image used */
+      background-image: url("{% static 'images/bgwithlogo.png' %}");
+      opacity: 0.9;
+
+      /* Set a specific height */
+      min-height: 600px;
+
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .parallax2 {
+      /* The image used */
+      background-image: url("{% static 'images/homepage.jpg' %}");
+      opacity: 0.8;
+
+      /* Set a specific height */
+      min-height: 400px;
+
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body style="font-family: 'Fjalla One', sans-serif;">
+
+  <br><br><br>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" style="padding-top: 16px; padding-bottom: 16px;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="font-size:35px;"><img style="height:50px; width:50px;"
+          src="{% static 'images/farmer.png' %}"> KrushiVikas</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}" style="font-size:20px;"><i
+                class="fas fa-home"></i> Home</a>
+          </li>
+          {% comment %} <li class="nav-item">
+            <a class="nav-link " href="{% url 'predict' %}" style="font-size:20px;"><i class="fas fa-seedling"></i> Crop
+              Prediction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'plantdd' %}" style="font-size:20px;"><i class="fas fa-notes-medical"></i>
+              Disease detection</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'weather' %}" style="font-size:20px;"><i class="fas fa-cloud"></i>
+              Weather</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}" style="font-size:20px;"><i class="fas fa-phone-alt"></i>
+              Contact</a>
+          </li> {% endcomment %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'ulogin' %}" style="font-size:20px;"> <i class="fas fa-sign-in-alt"></i>
+              Log In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="parallax1"></div>
+
+
+  <!--<a href="#"><img style="max-width:100%; height:auto;" src="{% static 'images/logobg.png' %}"></a>-->
+  <!--new start-->
+  <section class="about" data-aos="fade-up">
+    <center>
+      <div class="container" style="padding: 60px">
+        <h1 style="color: #488FB1;">About Us</h1><br><br>
+        <p style="color: #98B4AA">Agriculture and its allied sectors are a major contribution to the Indian economy. In
+          this day and age where everything functions digitally on devices, these areas of occupation need to keep up
+          too. One of the goals of KRUSHIVIKAS is to make our Indian farmers more aware of the variety of E farming
+          features that can be of great use to them. Ours is a small initiative, but is not restricted to a certain
+          level. There seems to be a lot of scope in the future of E farming and also in the scope of our system. As we
+          know, India is one of the largest populated countries in the world and the majority of people in India have
+          agriculture as their occupation. This application will be useful for farmers in order to reduce their basic
+          agriculture related struggles. </p>
+        <p style="color: #98B4AA"> Our system will suggest the best suitable crop for particular land and time of the
+          year based on content and weather parameters. Identification of the plant diseases is the key to prevent the
+          losses in the yield and quantity of the agricultural product. The studies of the plant diseases mean the
+          studies of visually observable patterns seen on the plant. Health monitoring and disease detection on plants
+          is very critical for sustainable agriculture. Solutions to problems, like inability of some farmers to buy
+          expensive tools for their fields because they prove to be budget busters, is provided by the rent tools'
+          feature. Users are also provided with current weather conditions and latest NEWS. Last but not the least,
+          expert assistance can be achieved easily in any case by our users. We wish all the luck and prosperity to the
+          Indian Agriculture Community. HAPPY FARMING!!</p>
+      </div>
+    </center>
+  </section>
+  <!--new close-->
+  <div class="parallax2"></div>
+
+  <div class="album py-5 bg-light">
+    <div class="container" style="width:1000px;">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm">
+            <img
+              src="https://media.istockphoto.com/photos/beautiful-view-of-corn-farm-during-sunset-picture-id649730320?b=1&k=20&m=649730320&s=170667a&w=0&h=AEt96PeyGKbWjJIKl6iUOhHDdoXtlbbP31t713lm2Qs="
+              class="card-img-top" alt="crop prediction">
+
+            <div class="card-body">
+              <h5>CROP PREDICTION</h5>
+              <p class="card-text">Recommendation about the type of crops to be cultivated which is best suited</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="login">PREDICT</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm">
+            <img
+              src="https://media.istockphoto.com/photos/tween-asian-boy-looking-at-leaves-through-a-magnifying-glass-plant-picture-id1242704239?b=1&k=20&m=1242704239&s=170667a&w=0&h=QA7ZBHH0i-SQfAemF0_eaSrN6fEwdTldgyIl212QtJA="
+              class="card-img-top" alt="crop prediction">
+
+            <div class="card-body">
+              <h5>PLANT DISEASE RECOGNITION</h5>
+              <p class="card-text">Predicting the name and causes of crop disease and suggestions to cure</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="login">DETECT</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm">
+            <img
+              src="  https://media.istockphoto.com/photos/various-gardening-tools-in-the-garden-picture-id1128479561?b=1&k=20&m=1128479561&s=170667a&w=0&h=9F2dGqOiL9vlvx7KCCyhXJX10wlwVJVlJtCRpss32IM="
+              class="card-img-top" alt="crop prediction">
+
+            <div class="card-body">
+              <h5>RENT TOOLS</h5>
+              <p class="card-text">Know the power of compounding and renting. Start renting now !!</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="login">RENT</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm">
+            <img
+              src="https://media.istockphoto.com/photos/woman-in-space-with-earth-reflection-picture-id1314996177?b=1&k=20&m=1314996177&s=170667a&w=0&h=MwQY_LDOc1ZNSH22P-FgCu4j-ic0zzZZSQ84zpH1dpE="
+              class="card-img-top" alt="crop prediction">
+
+            <div class="card-body">
+              <h5>KNOW THE CLIMATE</h5>
+              <p class="card-text">To know current climatic conditions in your region!!</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="login">WEATHER</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm">
+            <img
+              src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+              class="card-img-top img-fluid" alt="crop prediction">
+
+            <div class="card-body">
+              <h5>CHECK OUT THE LATEST NEWS</h5>
+              <p class="card-text">Click here to know whats going around the world!</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="login">NEWS</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm">
+            <img src="https://cdn.pixabay.com/photo/2017/12/02/14/38/contact-us-2993000__480.jpg"
+              class="card-img-top img-fluid" alt="crop prediction" style="height:235px;">
+
+            <div class="card-body">
+              <h5>EXPERT ASSISTANCE</h5>
+              <p class="card-text">Need our help ? click here and reach out to us out for more support.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="login">CONTACT</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+
+  </div>
+
+
+
+  </centre>
+
+  {% comment %} footer {% endcomment %}
+  <div style="background-color:#D3DEDC; padding:30px;" class="container-fluid  pb-5  ">
+
+    <div id="contact" class="container">
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4">
+
+
+          <h1> Krushi Vikas</h1>
+          <p>Designed and built with all the love in the world by the Krushi Vikas team with the help of our
+            contributors.</p>
+          <i class="fas fa-map-marker-alt"></i> V.E.S. Institute of Technology, Hashu Adwani Memorial Complex,
+          Collector's Colony, Chembur, Mumbai, Maharashtra -400074 <br>
+          <i class="fas fa-envelope"></i><a href="mailto: krushivikas2022@gmail.com" style="color:black;"> krushivikas2022@gmail.com</a><br><br>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-linkedin-in"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-instagram"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-twitter"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-facebook-f"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-youtube"></i></a>
+
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <center>
+            <img style="height:300px; width:300px;" src="{% static 'images/farmer.png' %}">
+          </center>
+
+
+        </div>
+
+        <div class="col-lg-4 col-md-4">
+          <center>
+            <h3>Company</h3>
+            <a style="color:black; text-decoration:none" href="{% url 'ulogin' %}" class="linked">Crop
+              Prediction</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'ulogin' %}" class="linked"> Disease
+              detection</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'ulogin' %}" class="linked">Contact us</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'help' %}" class="linked">Help</a><br>
+          </center>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      offset: 250,
+      duration: 2000,
+    });
+  </script>
+</body>
+
+</html>

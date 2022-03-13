@@ -1,0 +1,227 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>KrushiVikas | Weather</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Fjalla+One&display=swap" rel="stylesheet">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    .nav-item:hover {
+      text-decoration: underline;
+      text-decoration-color: red;
+      -webkit-text-decoration-color: red;
+    }
+
+    .box {
+      box-shadow: 1px 8px 20px grey;
+      -webkit-transition: box-shadow .6s ease-in;
+    }
+  </style>
+</head>
+
+<body style="font-family: 'Fjalla One', sans-serif;">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" style="padding-top: 16px; padding-bottom: 16px;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="font-size:35px;"><img style="height:50px; width:50px;"
+          src="{% static 'images/farmer.png' %}"> KrushiVikas</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      {% if user.is_authenticated %}
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          {% comment %} <li class="nav-item">
+            <a class="nav-link">Welcome {{user.username}}</a>
+          </li> {% endcomment %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="font-size:20px;"><i
+                class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'predict' %}" style="font-size:20px;"><i class="fas fa-seedling"></i> Crop
+              Prediction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'plantdd' %}" style="font-size:20px;"><i class="fas fa-notes-medical"></i>
+              Disease detection</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" style="font-size:20px"
+              role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-solid fa-axe"></i>
+              Tools</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'process' %}">Tool renting process</a>
+              </li>
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'addtools' %}">Add Tools</a></li>
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'viewtools' %}">View Available Tools</a>
+              </li>
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'mytools' %}">My Tools</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}" style="font-size:20px;"><i class="fas fa-phone-alt"></i>
+              Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'developers' %}" style="font-size:20px; padding-left:420px;">
+              Contributors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'ulogout' %}" style="font-size:20px; padding-left:20px;"><i
+                class="fas fa-sign-out-alt"></i> Log Out</a>
+          </li>
+        </ul>
+      </div>
+      {% else %}
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" style="font-size:20px;"><i class="fas fa-home"></i>
+              Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'ulogin' %}" style="font-size:20px;"> <i class="fas fa-sign-in-alt"></i>
+              Log In</a>
+          </li>
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+  <br>
+  <br><br><br><br>
+
+  <br>
+  <div class="container box" style="width: 1300px; height: 590px; padding: 50px;;">
+    <div class="row">
+      <br>
+      <div class="col-md-6">
+        <div class="container" align="left" data-aos="fade-up" style="width: 500px; height: 500px; padding-left: 0px;">
+          <p style="color:#495371; font-size:40px;">General Information </p>
+
+          <p style="color:#74959A; font-size:20px;">The success of crop growth depends on well balanced parameters in
+            relation to the climate. Some crops thrive better in the rainy season as compared to the dry. </p>
+          <p style="color:#74959A; font-size:20px;">Some of the best conditions recommended for healthy plant growth
+            consist of:</p>
+          <ul>
+            <li style="color:#74959A; font-size:20px;">Air Temperature: 24 °C Day/ 19 °C Day (75F/65F).</li>
+            <li style="color:#74959A; font-size:20px;">H2O Temperature: no higher than 25 °C, cool at 26 °C, heat at 24
+              °C.</li>
+            <li style="color:#74959A; font-size:20px;">Relative Humidity: minimum 50 and no higher than 70%.</li>
+            <li style="color:#74959A; font-size:20px;">CO2: 1500 ppm if light is available, ambient.</li>
+            <li style="color:#74959A; font-size:20px;">Flow rate: 1 liter per minute of nutrient solution.</li>
+            <li style="color:#74959A; font-size:20px;">pH: 5.5-6.5.</li>
+
+
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="container " align="left">
+          <p style="color:#495371; font-size:40px;" data-aos="fade-up">Today's Weather for - </p>
+          <form method="POST">
+            {% csrf_token %}
+            <input data-aos="fade-up" type="text" name='city' style="width:500px; height:40px"
+              placeholder="Enter your city name">
+            <br>
+            <br>
+            <div id="b">
+              <button data-aos="fade-up" type="submit"><img style="width:65px; height:65px"
+                  src="{% static 'images/searchbutton.png' %}"></button>
+            </div>
+          </form>
+          <br>
+          <p data-aos="fade-up" style="color:black; font-size:20px;">{{msg}}<img src={{ icon }}></p>
+          </center>
+          <br>
+          <br>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <br><br><br><br>
+  <div style="background-color:#D3DEDC; padding:30px;" class="container-fluid  pb-5  ">
+
+    <div id="contact" class="container">
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4">
+
+
+          <h1> Krushi Vikas</h1>
+          <p>Designed and built with all the love in the world by the Krushi Vikas team with the help of our
+            contributors.</p>
+          <i class="fas fa-map-marker-alt"></i> V.E.S. Institute of Technology, Hashu Adwani Memorial Complex,
+          Collector's Colony, Chembur, Mumbai, Maharashtra -400074 <br>
+          <i class="fas fa-envelope"></i><a href="mailto: krushivikas2022@gmail.com" style="color:black;"> krushivikas2022@gmail.com</a><br><br>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-linkedin-in"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-instagram"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-twitter"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-facebook-f"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-youtube"></i></a>
+
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <center>
+            <img style="height:300px; width:300px;" src="{% static 'images/farmer.png' %}">
+          </center>
+
+
+        </div>
+
+        <div class="col-lg-4 col-md-4">
+          <center>
+            <h3>Company</h3>
+            <a style="color:black; text-decoration:none" href="{% url 'predict' %}" class="linked">Crop
+              Prediction</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'plantdd' %}" class="linked"> Disease
+              detection</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'contact' %}" class="linked">Contact us</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'ulogout' %}" class="linked">Log Out</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'help' %}" class="linked">Help</a><br>
+          </center>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      offset: 250,
+      duration: 2000,
+    });
+  </script>
+
+</body>
+
+</html>

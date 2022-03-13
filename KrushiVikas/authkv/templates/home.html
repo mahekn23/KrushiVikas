@@ -1,0 +1,363 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>KrushiVikas | Home</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Fjalla+One&display=swap" rel="stylesheet">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <title>KrushiVikas</title>
+  <style>
+    .nav-item:hover {
+      text-decoration: underline;
+      text-decoration-color: red;
+      -webkit-text-decoration-color: red;
+    }
+
+    .box:hover {
+      box-shadow: 1px 8px 20px grey;
+      -webkit-transition: box-shadow .6s ease-in;
+    }
+  </style>
+</head>
+
+<body style="font-family: 'Fjalla One', sans-serif;">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" style="padding-top: 16px; padding-bottom: 16px;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="font-size:35px;"><img style="height:50px; width:50px;"
+          src="{% static 'images/farmer.png' %}"> KrushiVikas</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      {% if user.is_authenticated %}
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="font-size:20px;"><i
+                class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'predict' %}" style="font-size:20px;"><i class="fas fa-seedling"></i> Crop
+              Prediction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'plantdd' %}" style="font-size:20px;"><i class="fas fa-notes-medical"></i>
+              Disease detection</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" style="font-size:20px"
+              role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-solid fa-axe"></i>
+              Tools</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'process' %}">Tool renting process</a>
+              </li>
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'addtools' %}">Add Tools</a></li>
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'viewtools' %}">View Available Tools</a>
+              </li>
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'mytools' %}">My Tools</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}" style="font-size:20px;"><i class="fas fa-phone-alt"></i>
+              Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'developers' %}" style="font-size:20px; padding-left:420px;">
+              Contributors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'ulogout' %}" style="font-size:20px; padding-left:20px;"><i
+                class="fas fa-sign-out-alt"></i> Log Out</a>
+          </li>
+        </ul>
+      </div>
+      {% else %}
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" style="font-size:20px;"><i class="fas fa-home"></i>
+              Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'ulogin' %}" style="font-size:20px;"> <i class="fas fa-sign-in-alt"></i>
+              Log In</a>
+          </li>
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+
+  {% comment %} caroausal {% endcomment %}
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'images/homepage.jpg' %}" height="500px" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h2></h2>
+          <h4>One stop solution for all your needs!!!</h4>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://d27aquackk44od.cloudfront.net/wp-content/uploads/2020/03/19122922/edge-cloud-computing-initiative-to-boost-U.S.-agriculture.jpg"
+          height="500px" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h2>Crop Prediction</h2>
+          <h4>Find out the most suitable crop to grow in your farm!!!</h4>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://images.unsplash.com/photo-1625256814841-20ba4a7d1df3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          height="500px" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h2>Disease Detection</h2>
+          <h4>Find out the disease from which ur plant is suffering !!</h4>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <div class="album py-5 bg-light">
+    <div class="container" style="width:1000px;">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm box">
+            <img
+              src="https://media.istockphoto.com/photos/beautiful-view-of-corn-farm-during-sunset-picture-id649730320?b=1&k=20&m=649730320&s=170667a&w=0&h=AEt96PeyGKbWjJIKl6iUOhHDdoXtlbbP31t713lm2Qs="
+              class="card-img-top" alt="crop prediction">
+
+            <div class="card-body">
+              <h5>CROP PREDICTION</h5>
+              <p class="card-text">Recommendation about the type of crops to be cultivated which is best suited</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="{% url 'predict' %}">PREDICT</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm">
+            <img
+              src="https://media.istockphoto.com/photos/tween-asian-boy-looking-at-leaves-through-a-magnifying-glass-plant-picture-id1242704239?b=1&k=20&m=1242704239&s=170667a&w=0&h=QA7ZBHH0i-SQfAemF0_eaSrN6fEwdTldgyIl212QtJA="
+              class="card-img-top" alt="crop prediction">
+
+            <div class="card-body">
+              <h5>PLANT DISEASE RECOGNITION</h5>
+              <p class="card-text">Predicting the name and causes of crop disease and suggestions to cure</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="{% url 'plantdd' %}">DETECT</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm">
+            <img
+              src="  https://media.istockphoto.com/photos/various-gardening-tools-in-the-garden-picture-id1128479561?b=1&k=20&m=1128479561&s=170667a&w=0&h=9F2dGqOiL9vlvx7KCCyhXJX10wlwVJVlJtCRpss32IM="
+              class="card-img-top" alt="crop prediction">
+
+            <div class="card-body">
+              <h5>RENT TOOLS</h5>
+              <p class="card-text">Know the power of compounding and renting. Start renting now !!</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="{% url 'tools' %}">RENT</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm">
+            <img
+              src="https://media.istockphoto.com/photos/woman-in-space-with-earth-reflection-picture-id1314996177?b=1&k=20&m=1314996177&s=170667a&w=0&h=MwQY_LDOc1ZNSH22P-FgCu4j-ic0zzZZSQ84zpH1dpE="
+              class="card-img-top" alt="crop prediction">
+
+            <div class="card-body">
+              <h5>KNOW THE CLIMATE</h5>
+              <p class="card-text">To know current climatic conditions in your region!!</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="{% url 'weather' %}">WEATHER</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm">
+            <img
+              src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+              class="card-img-top img-fluid" alt="crop prediction">
+
+            <div class="card-body">
+              <h5>CHECK OUT THE LATEST NEWS</h5>
+              <p class="card-text">Click here to know whats going around the world!</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="{% url 'news' %}">NEWS</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col box" style="padding:8px;" data-aos="fade-up">
+          <div class="card shadow-sm">
+            <img src="https://cdn.pixabay.com/photo/2017/12/02/14/38/contact-us-2993000__480.jpg"
+              class="card-img-top img-fluid" alt="crop prediction" style="height:235px;">
+
+            <div class="card-body">
+              <h5>EXPERT ASSISTANCE</h5>
+              <p class="card-text">Need our help ? click here and reach out to us out for more support.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info"><a style="color:white; text-decoration:none"
+                      href="{% url 'contact' %}">CONTACT</a></button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  </centre>
+  {% comment %} footer start {% endcomment %}
+
+  <div style="background-color:#D3DEDC; padding:30px;" class="container-fluid  pb-5  ">
+
+    <div id="contact" class="container">
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4">
+
+
+          <h1> Krushi Vikas</h1>
+          <p>Designed and built with all the love in the world by the Krushi Vikas team with the help of our
+            contributors.</p>
+          <i class="fas fa-map-marker-alt"></i> V.E.S. Institute of Technology, Hashu Adwani Memorial Complex,
+          Collector's Colony, Chembur, Mumbai, Maharashtra -400074 <br>
+          <i class="fas fa-envelope"></i><a href="mailto: krushivikas2022@gmail.com" style="color:black;"> krushivikas2022@gmail.com</a><br><br>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-linkedin-in"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-instagram"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-twitter"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-facebook-f"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-youtube"></i></a>
+
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <center>
+            <img style="height:300px; width:300px;" src="{% static 'images/farmer.png' %}">
+          </center>
+
+
+        </div>
+
+        <div class="col-lg-4 col-md-4">
+          <center>
+            <h3>Company</h3>
+            <a style="color:black; text-decoration:none" href="{% url 'predict' %}" class="linked">Crop
+              Prediction</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'plantdd' %}" class="linked"> Disease
+              detection</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'contact' %}" class="linked">Contact us</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'ulogout' %}" class="linked">Log Out</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'help' %}" class="linked">Help</a><br>
+          </center>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {% comment %}footer {% endcomment %}
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      offset: 250,
+      duration: 2000,
+    });
+  </script>
+</body>
+
+</html>

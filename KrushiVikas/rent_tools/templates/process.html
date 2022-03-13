@@ -1,0 +1,335 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Fjalla+One&display=swap" rel="stylesheet">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <title>Krushi Vikas | Renting tool process</title>
+
+  <style>
+    .nav-item:hover {
+      text-decoration: underline;
+      text-decoration-color: red;
+      -webkit-text-decoration-color: red;
+    }
+
+    .btn-group button {
+      background-color: #6A9C78;
+      /* Green background */
+      border: 1px solid green;
+      /* Green border */
+      color: white;
+      /* White text */
+      padding: 10px 24px;
+      /* Some padding */
+      cursor: pointer;
+      /* Pointer/hand icon */
+      float: left;
+      /* Float the buttons side by side */
+    }
+
+    /* Clear floats (clearfix hack) */
+    .btn-group:after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .btn-group button:not(:last-child) {
+      border-right: none;
+      /* Prevent double borders */
+    }
+
+    /* Add a background color on hover */
+    .btn-group button:hover {
+      background-color: #464E2E;
+    }
+  </style>
+</head>
+
+<body style="font-family: 'Fjalla One', sans-serif;">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" style="padding-top: 16px; padding-bottom: 16px;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="font-size:35px;"><img style="height:50px; weight:50px;"
+          src="{% static 'images/farmer.png' %}"> KrushiVikas</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      {% if user.is_authenticated %}
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'home' %}" style="font-size:20px;"><i
+                class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'predict' %}" style="font-size:20px;"><i class="fas fa-seedling"></i> Crop
+              Prediction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'plantdd' %}" style="font-size:20px;"><i class="fas fa-notes-medical"></i>
+              Disease detection</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" style="font-size:20px"
+              role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-solid fa-axe"></i>
+              Tools</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'process' %}">Tool renting process</a>
+              </li>
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'addtools' %}">Add Tools</a></li>
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'viewtools' %}">View Available Tools</a>
+              </li>
+              <li><a class="dropdown-item" style="font-size:15px" href="{% url 'mytools' %}">My Tools</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}" style="font-size:20px;"><i class="fas fa-phone-alt"></i>
+              Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'developers' %}" style="font-size:20px; padding-left:420px;">
+              Contributors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'ulogout' %}" style="font-size:20px; padding-left:20px;"><i
+                class="fas fa-sign-out-alt"></i> Log Out</a>
+          </li>
+        </ul>
+      </div>
+      {% else %}
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" style="font-size:20px;"><i class="fas fa-home"></i>
+              Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'ulogin' %}" style="font-size:20px;"> <i class="fas fa-sign-in-alt"></i>
+              Log In</a>
+          </li>
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+  <br><br><br><br><br><br>
+  <center>
+    <h1>Get familiarized with our tool renting process</h1>
+    <br>
+    <h5>Please select the language</h5><br>
+  </center>
+  <div class="container" style="background-color: #E5EDB7;  border-radius: 5%; padding:50px;">
+    <div class="btn-group" style="width:100%">
+      <button style="width:33.3%" onclick="myFunction1()">English</button>
+      <button style="width:33.3%" onclick="myFunction2()">Hindi</button>
+      <button style="width:33.3%" onclick="myFunction3()">Marathi</button>
+    </div>
+    <br><br><br>
+    <div id="myDIV1" data-aos="fade-up" style="display:block;">
+      <h3>Renting a tool from other farmers</h3>
+      <p>You go to the “View Tools” section and find the farming tool you were looking for. The contact details of the
+        owner are provided so that you can contact him or her as per needs.</p>
+      <br>
+      <hr>
+      <br>
+      <h3>Adding a tool to rent to other farmers</h3>
+      <p>Suppose you would like to provide a particular farming tool for renting, you can go the “Add Tool for Renting”
+        page and fill up the details in the form along with a clear image of the tool. This tool will be added to the
+        list.</p>
+      <br>
+      <hr>
+      <br>
+      <h3>Deleting a tool</h3>
+      <p>Suppose you have given a tool to a particular farmer on rent, you have to remove it from the list of tools
+        available, then you should go to the “View My Tools” section and delete that particular tool. (Make sure to
+        delete the tool at once after providing it to someone, you can add it back again once the stipulated period is
+        over).</p>
+      <br>
+
+    </div>
+
+    <div id="myDIV2" data-aos="fade-left" style="display: none;">
+      <h3>अन्य किसानों से एक उपकरण किराए पर लेना</h3>
+      <p>आप "उपकरण देखें" अनुभाग पर जाएं और उस कृषि उपकरण को ढूंढें जिसे आप ढूंढ रहे थे। मालिक का संपर्क विवरण प्रदान
+        किया जाता है ताकि आप जरूरत के अनुसार उससे संपर्क कर सकें।</p>
+      <br>
+      <hr>
+      <br>
+      <h3>अन्य किसानों को किराए पर देने के लिए एक उपकरण जोड़ना</h3>
+      <p>मान लीजिए कि आप किराए पर लेने के लिए एक विशेष कृषि उपकरण प्रदान करना चाहते हैं, तो आप "किराए पर लेने के लिए
+        उपकरण जोड़ें" पृष्ठ पर जा सकते हैं और उपकरण की स्पष्ट छवि के साथ फॉर्म में विवरण भर सकते हैं। यह उपकरण सूची में
+        जोड़ा जाएगा।</p>
+      <br>
+      <hr>
+      <br>
+      <h3>उपकरण हटाना</h3>
+      <p>मान लीजिए आपने किसी विशेष किसान को किराए पर एक उपकरण दिया है, आपको इसे उपलब्ध उपकरणों की सूची से हटाना है, तो
+        आपको "मेरे उपकरण देखें" अनुभाग में जाना चाहिए और उस विशेष उपकरण को हटा देना चाहिए। (किसी को प्रदान करने के बाद
+        उपकरण को एक बार में हटाना सुनिश्चित करें, निर्धारित अवधि समाप्त होने के बाद आप इसे फिर से जोड़ सकते हैं)।</p>
+      <br>
+
+    </div>
+
+
+    <div id="myDIV3" data-aos="fade-left" style="display: none;">
+      <h3>इतर शेतकऱ्यांकडून एक साधन भाड्याने घेणे</h3>
+      <p>तुम्ही "साधने पहा" विभागात जा आणि तुम्ही शोधत असलेले शेतीचे साधन शोधा. मालकाचे संपर्क तपशील प्रदान केले आहेत
+        जेणेकरुन तुम्ही त्याच्याशी किंवा तिच्याशी देखील गरजेनुसार संपर्क साधू शकता.</p>
+      <br>
+      <hr>
+      <br>
+      <h3>इतर शेतकऱ्यांना भाड्याने देण्यासाठी एक साधन जोडणे</h3>
+      <p>समजा तुम्हाला भाड्याने देण्यासाठी एक विशिष्ट शेती साधन उपलब्ध करून द्यायचे असेल, तर तुम्ही “भाड्याने देण्याचे
+        साधन जोडा” पृष्ठावर जाऊ शकता आणि टूलच्या स्पष्ट प्रतिमेसह फॉर्ममध्ये तपशील भरा. हे साधन सूचीमध्ये जोडले जाईल.
+      </p>
+      <br>
+      <hr>
+      <br>
+      <h3>साधन हटवा</h3>
+      <p>समजा तुम्ही एखाद्या विशिष्ट शेतकर्‍याला भाड्याने एक साधन दिले असेल, तर तुम्हाला ते उपलब्ध साधनांच्या सूचीमधून
+        काढून टाकावे लागेल, नंतर तुम्ही “माय टूल्स पहा” विभागात जाऊन ते साधन हटवावे. (एखाद्याला साधन प्रदान केल्यानंतर
+        ते त्वरित हटवण्याची खात्री करा, निर्धारित कालावधी संपल्यानंतर तुम्ही ते पुन्हा जोडू शकता).</p>
+      <br>
+
+    </div>
+
+  </div>
+  </div>
+
+
+  <br><br>
+
+
+  <div style="background-color:#D3DEDC; padding:30px;" class="container-fluid  pb-5  ">
+
+    <div id="contact" class="container">
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4">
+
+
+          <h1> Krushi Vikas</h1>
+          <p>Designed and built with all the love in the world by the Krushi Vikas team with the help of our
+            contributors.</p>
+          <i class="fas fa-map-marker-alt"></i> V.E.S. Institute of Technology, Hashu Adwani Memorial Complex,
+          Collector's Colony, Chembur, Mumbai, Maharashtra -400074 <br>
+          <i class="fas fa-envelope"></i><a href="mailto: krushivikas2022@gmail.com" style="color:black;"> krushivikas2022@gmail.com</a><br><br>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-linkedin-in"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-instagram"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-twitter"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-facebook-f"></i></a>
+          <a href="" style="padding: 5px; font-size: 20px;" class="contactimg"><i class="fab fa-youtube"></i></a>
+
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <center>
+            <img style="height:300px; width:300px;" src="{% static 'images/farmer.png' %}">
+          </center>
+
+
+        </div>
+
+        <div class="col-lg-4 col-md-4">
+          <center>
+            <h3>Company</h3>
+            <a style="color:black; text-decoration:none" href="{% url 'predict' %}" class="linked">Crop
+              Prediction</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'plantdd' %}" class="linked"> Disease
+              detection</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'contact' %}" class="linked">Contact us</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'ulogout' %}" class="linked">Log Out</a><br>
+            <a style="color:black; text-decoration:none" href="{% url 'help' %}" class="linked">Help</a><br>
+          </center>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {% comment %}footer {% endcomment %}
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      offset: 250,
+      duration: 1300,
+    });
+
+    function myFunction1() {
+      var x = document.getElementById("myDIV1");
+      var y = document.getElementById("myDIV2");
+      if (y.style.display === "block") {
+        y.style.display = "none";
+      }
+      var z = document.getElementById("myDIV3");
+      if (z.style.display === "block") {
+        z.style.display = "none";
+      }
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    function myFunction2() {
+      var x = document.getElementById("myDIV2");
+      var y = document.getElementById("myDIV1");
+      if (y.style.display === "block") {
+        y.style.display = "none";
+      }
+      var z = document.getElementById("myDIV3");
+      if (z.style.display === "block") {
+        z.style.display = "none";
+      }
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+    function myFunction3() {
+      var x = document.getElementById("myDIV3");
+      var y = document.getElementById("myDIV1");
+      if (y.style.display === "block") {
+        y.style.display = "none";
+      }
+      var z = document.getElementById("myDIV2");
+      if (z.style.display === "block") {
+        z.style.display = "none";
+      }
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
