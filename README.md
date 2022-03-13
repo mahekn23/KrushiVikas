@@ -59,9 +59,9 @@ All datasets required are obtained from Kaggle.com and are included in the corre
 - To run this web app, kidnly download the zip file KrushiVikas and Unzip the folder in your system or clone the repository.
 - Open command prompt and navigate to the KrushiVikas folder that includes the file manage.py and all the apps.
 - On that path, run the following commands - 
-  # python manage.py makemigrations
-  # python manage.py migrate
-  # python manage.py runserver.
+  1. python manage.py makemigrations
+  2. python manage.py migrate
+  3. python manage.py runserver.
 
 ## FUTURE SCOPE:
 
