@@ -64,6 +64,7 @@ USAGE:
 - python manage.py runserver.
 
 FUTURE SCOPE:
+
 Future directions include - 
 (1) working on larger datasets for crop prediction, 
 (2) adding more leaf diseases and increasing the accuracy of the model, 
