@@ -1,15 +1,15 @@
 # KrushiVikas: A multiservice web-app for Indian Farmers. 
-Web Application: 
+## Web Application: 
 
-PURPOSE:
+## PURPOSE:
 
 Agriculture and its allied sectors are a major contribution to the Indian economy. In this day and age where everything functions digitally on devices, these areas of occupation need to keep up too. One of our goals was to make our Indian farmers more aware of the variety of E farming features that can be of great use to them. Ours is a small initiative, but is not restricted to a certain level. There seems to be a lot of scope in the future of E farming and also in the scope of our system.
 
-ABOUT THE APPLICATION:
+## ABOUT THE APPLICATION:
 
 A Django and ML based web application with a whole lot of features to help the E - Agro industry.
 
-FEATURES:
+## FEATURES:
 
 - Crop Prediction - Random Forest Classifier : 99% accuracy
 - Plant Disease Detection - Sequential Model : 95% accuracy
@@ -18,18 +18,18 @@ FEATURES:
 - NEWs - REST API
 - Expert assistance - contact details and feedback
 
-DEMO:
+## DEMO:
 
 Video Link: https://drive.google.com/file/d/1zTPR7gRc6Up6kOk8NvxKBmq1yvsWnJ3h/view?usp=sharing
 
-CONTRIBUTERS:
+## CONTRIBUTERS:
 
 - Mahek Nagdev:
 - Sejal Budhani:
 - Roshni Kataria:
 - Jayesh Dhanrajani:
 
-TECHNOLOGY USED:
+## TECHNOLOGY USED:
 
 Machine Learning,
 Image Processing,
@@ -37,24 +37,24 @@ Django, REST APIs,
 HTML, CSS, JS,
 Tensorflow.
 
-TOOLS:
+## TOOLS:
 
 VS Code,
 Canva,
 Draw.io.
 
-DATASETS:
+## DATASETS:
 
 All datasets required are obtained from Kaggle.com and are included in the corresponding feature folders. 
 
-REQUIREMENTS TO RUN THE WEB APP:
+## REQUIREMENTS TO RUN THE WEB APP:
 
 (Below stated versions were used to build this application)
-Python V3.8.7
-Django V3.2.4
-Tensorflow V2.7.0
+- Python V3.8.7
+- Django V3.2.4
+- Tensorflow V2.7.0
 
-USAGE:
+## USAGE:
 
 - To run this web app, kidnly download the zip file KrushiVikas and Unzip the folder in your system or clone the repository.
 - Open command prompt and navigate to the KrushiVikas folder that includes the file manage.py and all the apps.
@@ -63,7 +63,7 @@ USAGE:
 - python manage.py migrate
 - python manage.py runserver.
 
-FUTURE SCOPE:
+## FUTURE SCOPE:
 
 Future directions include - 
 (1) working on larger datasets for crop prediction, 
