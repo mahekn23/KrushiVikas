@@ -27,10 +27,10 @@ Video Link: https://drive.google.com/file/d/1zTPR7gRc6Up6kOk8NvxKBmq1yvsWnJ3h/vi
 
 ## CONTRIBUTERS:
 
-- Mahek Nagdev:
-- Sejal Budhani:
-- Roshni Kataria:
-- Jayesh Dhanrajani:
+- Mahek Nagdev: https://www.linkedin.com/in/mahek-nagdev-382a7b1b8/
+- Sejal Budhani: https://www.linkedin.com/in/sejal-budhani-6841b5204/
+- Roshni Kataria: https://www.linkedin.com/in/roshni-kataria/
+- Jayesh Dhanrajani: https://www.linkedin.com/in/jayesh-dhanrajani-34612916b/
 
 ## TECHNOLOGY USED:
 
@@ -48,8 +48,8 @@ Draw.io.
 
 ## DATASETS:
 
--Crop Prediction: .csv file is included in the corresponding feature folder.
--Plant disease detection : https://www.kaggle.com/datasets/emmarex/plantdisease
+- Crop Prediction: .csv file is included in the corresponding feature folder.
+- Plant disease detection : https://www.kaggle.com/datasets/emmarex/plantdisease
 
 ## REQUIREMENTS TO RUN THE WEB APP:
 
