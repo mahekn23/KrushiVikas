@@ -60,7 +60,7 @@ Draw.io.
 
 ## USAGE:
 
-- To run this web app, kidnly download the zip file KrushiVikas and Unzip the folder in your system or clone the repository.
+- To run this web app, kindly download the zip file KrushiVikas and Unzip the folder in your system or clone the repository.
 - Open command prompt and navigate to the KrushiVikas folder that includes the file manage.py and all the apps.
 - On that path, run the following commands - 
   1. python manage.py makemigrations
