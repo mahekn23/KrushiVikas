@@ -48,7 +48,8 @@ Draw.io.
 
 ## DATASETS:
 
-All datasets required are obtained from Kaggle.com and are included in the corresponding feature folders. 
+-Crop Prediction: .csv file is included in the corresponding feature folder.
+-Plant disease detection : https://www.kaggle.com/datasets/emmarex/plantdisease
 
 ## REQUIREMENTS TO RUN THE WEB APP:
 
