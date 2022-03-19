@@ -1,4 +1,7 @@
 # KrushiVikas: A multiservice web-app for Indian Farmers. 
+
+!(https://github.com/mahekn23/KrushiVikas/blob/master/KrushiVikas/authkv/static/images/logokrushi.PNG?raw=true)
+
 ## Web Application: 
 
 ## PURPOSE:
