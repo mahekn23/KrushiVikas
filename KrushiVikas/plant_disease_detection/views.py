@@ -36,9 +36,9 @@ def disease(request):
             instance.image = image
             instance.save()
 
-            model = load_model("D:/KrushiVikas/plant_disease_detection/pddmodel.h5")
+            model = load_model("pddmodel.h5")  #edit path according to your system before running this feature
 
-            path = "D:/KrushiVikas/media/uploads/" + img
+            path = "KrushiVikas/media/uploads/" + img  #edit path according to your system before running this feature
             print(path)
 
             im = convert_image_to_array(path)
