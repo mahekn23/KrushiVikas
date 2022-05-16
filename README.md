@@ -60,6 +60,7 @@ Draw.io.
 ## USAGE:
 
 - To run this web app, kindly download the zip file KrushiVikas and Unzip the folder in your system or clone the repository. Also download the .h5 file and place it in plant_disease_detection app folder; H5 file: https://drive.google.com/file/d/1ou3tFfgG4QOagcayMFTbaydE3uYoav_0/view?usp=sharing
+- Go to KrushiVikas/KrushiVikas and open settings.py file. On line 141 and 142 make the required changes i.e. add your email id and password of that email account.
 - Open command prompt and navigate to the KrushiVikas folder that includes the file manage.py and all the apps.
 - On that path, run the following commands - 
   1. python manage.py makemigrations
